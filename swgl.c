@@ -11,14 +11,28 @@
 
 /**
  * multiplies 4x4 matrices mat1 times mat2,
- * storing the result in mat 1. This works like OpenGL's glMultMtarix,
+ * storing the result in mat 1. This works like OpenGL's glMultMatrix,
  * with the order mat1 X mat2
  */
 void multMatrix4x4(myMat mat1, myMat mat2) {
+	myMat newMat;
+	for (int i = 0; i < 4; i++) {
+		for (int j = 0; j < 4; j++) {
+			double sum = 0;
+			// sum(mat1[i][0:4] * mat2[0:4][j])
+			newMat[i][j] = sum;
+		}
+	}
+	// copy newMat over to mat1
+	for (int i = 0; i < 4; i++) {
+		for (int j = 0; j < 4; j++) {
+			mat1[i][j] = newMat[i][j];
+		}
+	}
 }
 
 /**
- * Multiplies 4x4 matrix mat times point vertex, returningthe result as
+ * Multiplies 4x4 matrix mat times point vertex, returning the result as
  * a new myVertex array.
  */
 myVertex* transformVertex(myMat mat, myVertex vertex) {

@@ -1,4 +1,5 @@
 #include "swgl.h"
+#include <stdio.h>
 
 void example() {
 /*
@@ -32,5 +33,17 @@ void example() {
 }
 
 int main() {
+	myMat mat = {{0, 1, 0, 1},
+		     {1, 0, 1, 0},
+		     {0, 1, 0, 1},
+		     {1, 0, 1, 0}};
+	multMatrix4x4(mat, mat);
+
+	for (int i = 0; i < 4; i++) {
+		for (int j = 0; j < 4; j++) {
+			printf("%lf ", mat[i][j]); 		
+		}
+		printf("\n");	
+	}
 	return 0;
 }
