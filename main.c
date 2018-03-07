@@ -32,6 +32,15 @@ void example() {
 */
 }
 
+void printMat(myMat mat) {
+	for (int i = 0; i < 4; i++) {
+		for (int j = 0; j < 4; j++) {
+			printf("%d ", (int)mat[i][j]);
+		}
+		printf("\n");
+	}
+}
+
 int main() {
 	myMat mat1 = {{1, 2, 3, 4},
 				{4, 1, 2, 3},
@@ -42,12 +51,15 @@ int main() {
 				{3, 2, 1, 4},
 				{4, 3, 2, 1}};
 	multMatrix4x4(mat1, mat2);
-
-	for (int i = 0; i < 4; i++) {
-		for (int j = 0; j < 4; j++) {
-			printf("%.2lf ", mat1[i][j]); 		
-		}
-		printf("\n");	
-	}
+	
+	printf("Matrix Multiplication Test\n");
+	printMat(mat1);
+	printf("\n");
+	
+	printf("Identity Matrix Init Test\n");
+	myMat mat;
+	initMat(mat);
+	printMat(mat);
+	printf("\n");
 	return 0;
 }
