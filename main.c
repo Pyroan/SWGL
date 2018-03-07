@@ -33,15 +33,19 @@ void example() {
 }
 
 int main() {
-	myMat mat = {{0, 1, 0, 1},
-		     {1, 0, 1, 0},
-		     {0, 1, 0, 1},
-		     {1, 0, 1, 0}};
-	multMatrix4x4(mat, mat);
+	myMat mat1 = {{1, 2, 3, 4},
+				{4, 1, 2, 3},
+				{3, 4, 1, 2},
+				{2, 3, 4, 1}};
+	myMat mat2 = {{1, 4, 3, 2},
+				{2, 1, 4, 3},
+				{3, 2, 1, 4},
+				{4, 3, 2, 1}};
+	multMatrix4x4(mat1, mat2);
 
 	for (int i = 0; i < 4; i++) {
 		for (int j = 0; j < 4; j++) {
-			printf("%lf ", mat[i][j]); 		
+			printf("%.2lf ", mat1[i][j]); 		
 		}
 		printf("\n");	
 	}
