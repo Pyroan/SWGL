@@ -1,2 +1,2 @@
 all:
-	gcc main.c swgl.c -o main
+	gcc swgl-test.c swgl.c -o test

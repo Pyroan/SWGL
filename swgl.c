@@ -43,7 +43,7 @@ myVertex* transformVertex(myMat mat, myVertex vertex) {
 
 /**
  * Performs the same operations as transformVertex, except it alters the vertex
- * argument itself.
+ * argument itself. Not preferred. Probably unnecessary.
  */
 void resetVertex(myMat mat, myVertex vertex) {
 }
@@ -52,8 +52,7 @@ void resetVertex(myMat mat, myVertex vertex) {
  * Initializes 4x4 mat to the identity matrix.
  */
 void initMat(myMat mat) {
-	// This is kind of the over-thinky hyper-efficient way of doing it
-	// basically pretending it's a 1d matrix with a 1 at every 5th index.
+	// Basically pretending it's a 1d matrix with a 1 at every 5th index.
 	for (int i = 0; i < 16; i++) {
 		if (i % 5 == 0) {
 			mat[i/4][i%4] = 1;
