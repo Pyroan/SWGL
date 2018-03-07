@@ -34,9 +34,18 @@ void testIdentityMatrixInit() {
 	printf("\n");
 }
 
+void testMyTranslate() {
+	printf("Translate Matrix Test\n");
+	initMat(curMatrix);
+	myTranslate(2, 3, 1);
+	printMat(curMatrix);
+	printf("\n");
+}
+
 
 int main() {
 	testMatrixMultiplication();
 	testIdentityMatrixInit();
+	testMyTranslate();
 	return 0;
 }
