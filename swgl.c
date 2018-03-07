@@ -72,6 +72,14 @@ void initMat(myMat mat) {
  * translation matrix and sets curMatrix to the product.
  */
 void myTranslate(double dx, double dy, double dz) {
+	// Construct the translation matrix
+	myMat mat;
+	initMat(mat);
+	mat[0][3] = dx;
+	mat[1][3] = dy;
+	mat[2][3] = dz;
+	// Multiply curMatrix by it (and store it in curMatrix).
+	multMatrix4x4(curMatrix, mat);
 }
 
 /**
