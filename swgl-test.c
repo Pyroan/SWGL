@@ -58,11 +58,44 @@ void testMyRotate() {
 	printf("\n");
 }
 
+void testTransformVertex() {
+	printf("Transform Vertex Test\n");
+	myMat mat = {{5, 5, 105, 68},
+	{105, 32, 75, 12},
+	{88, 50, 51, 78},
+	{69, 42, 1, 3}};
+	
+	myVertex v = {3, 7, 5, 4};
+	
+	for (int i = 0; i < 4; i++) {
+		printf("%lf ", *transformVertex(mat, v)[i]);
+	}
+	printf("\n");
+}
+
+void testResetVertex() {
+	printf("Reset Vertex Test\n");
+	myMat mat = {{5, 5, 105, 68},
+	{105, 32, 75, 12},
+	{88, 50, 51, 78},
+	{69, 42, 1, 3}};
+	
+	myVertex v = {3, 7, 5, 4};
+	resetVertex(mat,v);
+	
+	for (int i = 0; i < 4; i++) {
+		printf("%.2lf ",v[i]);
+	}
+	printf("\n");
+}
+
 int main() {
 	testMatrixMultiplication();
 	testIdentityMatrixInit();
 	testMyTranslate();
 	testMyScale();
 	testMyRotate();
+	//testTransformVertex();
+	testResetVertex();
 	return 0;
 }
