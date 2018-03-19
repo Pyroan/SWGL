@@ -40,13 +40,32 @@ void multMatrix4x4(myMat mat1, myMat mat2) {
  * a new myVertex array.
  */
 myVertex* transformVertex(myMat mat, myVertex vertex) {
-}
+/*	myVertex newv;
+	for (int i = 0; i < 4; i++) {
+		double sum = 0;
+		for (int j = 0; j < 4; j++) {
+			sum += mat[i][j] * vertex[j];
+		}
+		newv[i] = sum;
+	}
+	return newv;
+*/ }
 
 /**
  * Performs the same operations as transformVertex, except it alters the vertex
- * argument itself. Not preferred. Probably unnecessary.
+ * argument itself. Not preferred. Probably unnecessary. But it's way easier tho.
  */
 void resetVertex(myMat mat, myVertex vertex) {
+	myVertex v;
+	for (int i = 0; i < 4; i++) {
+		double sum = 0;
+		for (int j = 0; j < 4; j++) {
+			sum += mat[i][j] * vertex[j];
+		}
+		v[i] = sum;
+	}
+	for (int i = 0; i < 4; i++)
+		vertex[i] = v[i];
 }
 
 /**
