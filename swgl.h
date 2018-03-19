@@ -5,6 +5,8 @@
 typedef double myVertex[4];
 typedef double myColor[3];
 typedef double myMat[4][4];
+
+// Global Vars
 myMat curMatrix;
 
 // Auxiliary functions

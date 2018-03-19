@@ -4,7 +4,7 @@
 void printMat(myMat mat) {
 	for (int i = 0; i < 4; i++) {
 		for (int j = 0; j < 4; j++) {
-			printf("%d ", (int)mat[i][j]);
+			printf("%.2lf ", mat[i][j]);
 		}
 		printf("\n");
 	}
@@ -45,16 +45,24 @@ void testMyTranslate() {
 void testMyScale() {
 	printf("Scale Matrix Test\n");
 	initMat(curMatrix);
-	myScale(2, 3, 4);
+	myScale(2.5, 3, 4);
 	printMat(curMatrix);
 	printf("\n");
 }
 
+void testMyRotate() {
+	printf("Rotate Matrix Test\n");
+	initMat(curMatrix);
+	myRotate(45,1,1,1);
+	printMat(curMatrix);
+	printf("\n");
+}
 
 int main() {
 	testMatrixMultiplication();
 	testIdentityMatrixInit();
 	testMyTranslate();
 	testMyScale();
+	testMyRotate();
 	return 0;
 }

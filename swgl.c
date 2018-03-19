@@ -1,4 +1,5 @@
 #include "swgl.h"
+#include <math.h>
 
 /*************************************
  *          SWGL - A 3D API          *
@@ -104,6 +105,29 @@ void myScale(double sx, double sy, double sz) {
  * This is to be implemented using quaternions.
  */
 void myRotate(double theta, double x, double y, double z) {
+	// Normalize [x, y, z]
+	double magnitude = sqrt((x*x)+(y*y)+(z*z));
+	x /= magnitude;
+	y /= magnitude;
+	z /= magnitude;
+	// Construct the quaternion rotation matrix (for there is but one).'
+	// I can't think of a non-brute force way to do this so prepare for obtuse code.
+	// Actual problem: The Quaternion matrix is 3x3.
+	myMat rot;
+	initMat(rot);
+	double ct = cos(theta * (M_PI / 180.0)); // Cosine of theta
+	double st = sin(theta * (M_PI / 180.0)); // Sine of theta
+	rot[0][0] = (x*x) * (1 - ct) + ct;
+	rot[0][1] = (x*y) * (1 - ct) - (z * st);
+	rot[0][2] = (x*z) * (1 - ct) + (y * st);
+	rot[1][0] = (y*x) * (1 - ct) + (z * st);
+	rot[1][1] = (y*y) * (1 - ct) + ct;
+	rot[1][2] = (y*z) * (1 - ct) - (x * st);
+	rot[2][0] = (z*x) * (1 - ct) - (y * st);
+	rot[2][1] = (z*y) * (1 - ct) + (x * st);
+	rot[2][2] = (z*z) * (1 - ct) + ct;
+	
+	multMatrix4x4(curMatrix, rot);
 }
 
 
